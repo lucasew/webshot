@@ -50,6 +50,7 @@ func (s Settings) LaunchChrome(ctx context.Context) error {
 }
 
 func (s Settings) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    w.Header().Add("Cache-Control", "no-cache")
     if (r.URL.Path == "/") {
         log.Printf("Loading '%s'", s.InputFile)
         http.ServeFile(w, r, s.InputFile)
@@ -93,9 +94,9 @@ func main() {
     defer cancel()
     var imgBuf []byte
     handleErr(chromedp.Run(cdpCtx, chromedp.Tasks{
+        emulation.SetDeviceMetricsOverride(Options.Width, Options.Height, 1, false),
         chromedp.Navigate("http://localhost:49490"),
         chromedp.Reload(),
-        emulation.SetDeviceMetricsOverride(Options.Width, Options.Height, 1, false),
         chromedp.WaitVisible("html", chromedp.ByQuery),
         chromedp.Screenshot("html", &imgBuf, chromedp.NodeVisible),
     }))
