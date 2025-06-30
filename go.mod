@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.24.4
 
 require (
-	github.com/chromedp/cdproto v0.0.0-20250625204652-ce640014f9ac
+	github.com/chromedp/cdproto v0.0.0-20250630014756-b7288190f53c
 	github.com/chromedp/chromedp v0.13.7
 	github.com/mafredri/cdp v0.35.0
 )
