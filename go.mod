@@ -2,7 +2,7 @@ module github.com/lucasew/webshot
 
 go 1.23
 
-toolchain go1.24.4
+toolchain go1.24.5
 
 require (
 	github.com/chromedp/cdproto v0.0.0-20250706212322-41fb261d0659
